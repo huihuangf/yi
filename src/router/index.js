@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/pages/index'
 import Release from '@/pages/release'
-
+import Test from '@/pages/xxx'
 Vue.use(Router)
 
 export default new Router({
@@ -16,6 +16,11 @@ export default new Router({
       path: '/release',
       name: 'release',
       component: Release
+    },
+    {
+      path: '/xxx',
+      name: 'xxx',
+      component: Test
     }
   ]
 })

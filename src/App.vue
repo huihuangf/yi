@@ -21,8 +21,6 @@
             <Footer/>
         </section>
         <!-- content YDC end -->
-
-    <router-view/>
   </div>
 </template>
 <script>

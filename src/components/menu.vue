@@ -9,70 +9,21 @@
                      </i>
                       {{menu.title}} 
                 </router-link>
-            </li>
-         
-            <li class="ydc-menu-item">
-                <span class="ydc-menu-sub-title">
-                    <i class="ydc-icon ydc-icon-file fl"></i>
-                    管理
-                </span>
-                <ul>
-                    <li>
-                        <a href="content.html">内容管理</a>
+                     
+                <div v-if="menu.type=='sub'" >
+                   <span class="ydc-menu-sub-title">
+                    <i :class="['ydc-icon', menu.icon,'fl']"></i>
+                   {{menu.title}}
+                  </span>
+                  <ul>
+                    <li v-for="item in menu.child">
+                         <router-link :to='item.to'>
+                             {{item.title}}
+                         </router-link>
                     </li>
-                    <li>
-                        <a href="related.html">内容同步</a>
-                    </li>
-                    <li>
-                        <a href="asset.html" class="">素材中心</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="ydc-menu-item">
-                <span class="ydc-menu-sub-title">
-                    <i class="ydc-icon ydc-icon-record fl"></i>
-                    数据
-            
-                </span>
-                <ul>
-                    <li>
-                        <a href="subscribe.html">订阅数据</a>
-                    </li>
-                    <li>
-                        <a href="content-data.html">内容数据</a>
-                    </li>
-                    <li>
-                        <a href="index-starLevel.html">指数星级</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="ydc-menu-item">
-                <span class="ydc-menu-sub-title">
-                    <i class="ydc-icon ydc-icon-set fl"></i>
-                    设置
-            
-                </span>
-                <ul>
-                    <li>
-                        <a href="info.html">账号信息</a>
-                    </li>
-                    <li>
-                        <a href="account.html">账号状态</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="ydc-menu-item">
-                <span class="ydc-menu-sub-title">
-                    <i class="ydc-icon ydc-icon-customer fl"></i>
-                    客服
-            
-                </span>
-                <ul>
-                    <li>
-                        <a href="#">在线咨询</a>
-                    </li>
-                </ul>
-            </li>
+                    </ul>
+                 </div>    
+               </li>
         </ul>
     </div>
 </template>
@@ -90,8 +41,24 @@ return {
 menus:[
    {type:'link',to:{name:'index',params:{}},icon:'ydc-icon-home',title:'首页'},
    {type:'link',to:{name:'release',params:{}},icon:'ydc-icon-find',title:'发布'},
-   ]
-};
+   {type:'sub',icon:'ydc-icon-file',title:'管理',child:[
+     {to:{name:'xxx',params:{}},title:'内容管理'},
+     {to:{name:'xxx',params:{}},title:'内容同步'},
+     {to:{name:'xxx',params:{}},title:'素材中心'}
+   ]},
+   {type:'sub',icon:'ydc-icon-record',title:'数据',child:[
+     {to:{name:'xxx',params:{}},title:'订阅数据'},
+     {to:{name:'xxx',params:{}},title:'内容数据'},
+     {to:{name:'xxx',params:{}},title:'指数星级'}
+   ]},
+   {type:'sub',icon:'ydc-icon-set',title:'设置',child:[
+     {to:{name:'xxx',params:{}},title:'账号信息'},
+     {to:{name:'xxx',params:{}},title:'账号状态'}
+   ]},
+    {type:'sub',icon:'ydc-icon-customer',title:'客服',child:[
+     {to:{name:'xxx',params:{}},title:'在线咨询'}
+   ]},
+]};
 },
 }
 </script>

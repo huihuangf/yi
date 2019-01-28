@@ -44,6 +44,12 @@ components: {
 data() {
 //这里存放数据
 return {
+    cur:0,
+    datas:[
+        {title:'公告栏',data:[
+            {id:2, title:"一点车点讯号平台关于封禁违规账号的通知4月13日4月20日", isNew: true, href="https://www.baidu.com"}
+        ]}
+    ]
 
 };
 },
