@@ -4,17 +4,13 @@
         <ul>
             <li class="ydc-menu-item" v-for="menu in menus">
                 <router-link v-if="menu.type=='link'" :to="menu.to" >
-                     <i :class="['ydc-icon','f1',menu.icon]"></i>
-                 {{menu.title}} 
-                </router-link>
-                
-            </li>
-            <li class="ydc-menu-item">
-                 <router-link :to="{name:'release',params:{}}" >
-                     <i class="ydc-icon ydc-icon-find fl"></i>
-                    发布
+                     <i :class="['ydc-icon',menu.icon,'fl']">
+                          
+                     </i>
+                      {{menu.title}} 
                 </router-link>
             </li>
+         
             <li class="ydc-menu-item">
                 <span class="ydc-menu-sub-title">
                     <i class="ydc-icon ydc-icon-file fl"></i>
