@@ -3,6 +3,10 @@ import Router from 'vue-router'
 import Index from '@/pages/index'
 import Release from '@/pages/release'
 import Test from '@/pages/xxx'
+import Login from '@/pages/login'
+import Reg from '@/pages/reg'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -21,6 +25,16 @@ export default new Router({
       path: '/xxx',
       name: 'xxx',
       component: Test
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/reg',
+      name: 'reg',
+      component: Reg
     }
   ]
 })

@@ -1,6 +1,10 @@
 <template>
-  <div id="app">
-   <Header/>
+  <div>
+      <div v-if="$route.name=='login' || $route.name=='reg'">
+          <router-view/>
+      </div>
+      <div v-if="$route.name!='login' && $route.name !='reg'">
+            <Header/>
      <!-- content YDC begin -->
         <section>
             <div class="ydc-content-slide ydc-body">
@@ -21,6 +25,7 @@
             <Footer/>
         </section>
         <!-- content YDC end -->
+      </div>
   </div>
 </template>
 <script>

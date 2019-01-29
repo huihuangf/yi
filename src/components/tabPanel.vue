@@ -3,31 +3,22 @@
 	<div class="ydc-tabPanel">
         <div>
             <ul>
-                <li class="hit">公告栏</li>
-                <li>一点车资讯</li>
+                <li v-for="data,index in datas" :class="index==cur?'hit':''" @click="cur=index">{{data.title}}</li>
             </ul>
 
         </div>
         <div class="ydc-panes">
-            <div class="ydc-pane" style="display:block;">
+            <div class="ydc-pane" v-for="data,index in datas" :style="{display:index==cur?'block':'none'}">
                 <ol class="ydc-pane-list">
-                    <li>
-                        <a href="page.html" target="_blank">一点车点讯号平台关于封禁违规账号的通知（4月13日-4月20日） <i>new</i></a>
-                        <span>2017-04-17 10:00:00</span>
+                    <li v-for="news in data.data">
+                        <a :href="news.href" target="_blank">{{news.title}} <i v-if="news.isNew">new</i></a>
+                        <span>{{news.time}}</span>
                     </li>
                     
                 </ol>
               <Pagination/>
             </div>
-            <div class="ydc-pane">
-                <ol class="ydc-pane-list">
-                    <li>
-                        <a href="https://www.toutiao.com/i6553905796478927364/" target="_blank">大号“思域”全新十代雅阁，革新换代后的全新十代雅阁到底如何！<i>new</i></a>
-                        <span>2017-04-17 10:00:00</span>
-                    </li>
-                </ol>
-              <Pagination/>
-            </div>
+           
         </div>
     </div>
 </template>
@@ -47,8 +38,18 @@ return {
     cur:0,
     datas:[
         {title:'公告栏',data:[
-            {id:2, title:"一点车点讯号平台关于封禁违规账号的通知4月13日4月20日", isNew: true, href="https://www.baidu.com"}
-        ]}
+            {id:2, title:"一点车点讯号平台关于封禁违规账号的通知（4月13日-4月20日）", isNew: true, href:"https://www.baidu.com",time:1548728945064 },
+            {id:4, title:"一点车点讯号平台关于封禁违规账号的通知（4月13日-4月20日）", isNew: true, href:"https://www.baidu.com",time:1558728945064 },
+            {id:5, title:"一点车点讯号平台关于封禁违规账号的通知（4月13日-4月20日）", isNew: true, href:"https://www.baidu.com",time:1588728945064 },
+            {id:6, title:"一点车点讯号平台关于封禁违规账号的通知（4月13日-4月20日）", isNew: true, href:"https://www.baidu.com",time:1549728945064 },
+            {id:8, title:"一点车点讯号平台关于封禁违规账号的通知（4月13日-4月20日）", isNew: true, href:"https://www.baidu.com",time:1538728945064 },
+            ]},
+        {title:'一点车资讯',data:[
+            {id:3, title:"大号“思域”全新十代雅阁，革新换代后的全新十代雅阁到底如何！", isNew: true, href:"https://www.baidu.com",time:1518728945064 },
+             {id:4, title:"大号“思域”全新十代雅阁，革新换代后的全新十代雅阁到底如何！", isNew: true, href:"https://www.baidu.com",time:1588728945064 },
+              {id:5, title:"大号“思域”全新十代雅阁，革新换代后的全新十代雅阁到底如何！", isNew: true, href:"https://www.baidu.com",time:1528728945064 },
+               {id:7, title:"大号“思域”全新十代雅阁，革新换代后的全新十代雅阁到底如何！", isNew: true, href:"https://www.baidu.com",time:1565728945064 }
+            ]}
     ]
 
 };
