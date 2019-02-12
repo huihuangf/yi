@@ -110,21 +110,32 @@
 						</div>
 					</form>
 
-                    <form action="" v-if="step==2">
+                    <form  v-if="step==2" ref="form3" enctype="multipart/form-data" method="post">
+					<input type="hidden" name="type" v-model="type"/>
 						<div class="ydc-reg-form-class ydc-reg-form-reg">
 							<div class="ydc-reg-form-group clearfix">
 								<label>帐号名称:</label>
 								<div class="ydc-reg-form-input">
-									<input type="text" id="loginEmail" name="username" class="ydc-form-control" autocomplete="off" placeholder="" style="width:200px;">
+									<input type="text" id="loginEmail" name="display_name" value="hh" class="ydc-form-control" autocomplete="off" placeholder="" style="width:200px;">
 									<div class="ydc-reg-form-text">
 										<p>请输入2至14字的帐号名称</p>
 									</div>
 								</div>
 							</div>
 							<div class="ydc-reg-form-group clearfix">
+								<label>密码:</label>
+								<div class="ydc-reg-form-input">
+									<input type="text" id="loginPassword" name="password" value="hh" class="ydc-form-control" autocomplete="off" placeholder="" style="width:200px;">
+									<div class="ydc-reg-form-text">
+										<p>请输入2至14字的密码</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="ydc-reg-form-group clearfix">
 								<label>帐号简介:</label>
 								<div class="ydc-reg-form-input">
-									<input type="password" id="psd" name="username" class="ydc-form-control" autocomplete="off" placeholder="">
+									<input type="password" id="psd" name="slogan" class="ydc-form-control" autocomplete="off" placeholder="" value="hh">
 									<div class="ydc-reg-form-text">
 										<p>请输入2至14字的帐号简介</p>
 									</div>
@@ -133,31 +144,9 @@
 							<div class="ydc-reg-form-group clearfix">
 								<label>帐号分类:</label>
 								<div class="ydc-reg-form-input">
-									<select>
-										<option>娱乐</option>
-										<option>汽车</option>
-										<option>情感</option>
-										<option>美食</option>
-										<option>时尚</option>
-										<option>时尚</option>
-										<option>娱乐</option>
-										<option>汽车</option>
-										<option>情感</option>
-										<option>美食</option>
-										<option>时尚</option>
-										<option>时尚</option>
-										<option>娱乐</option>
-										<option>汽车</option>
-										<option>情感</option>
-										<option>美食</option>
-										<option>时尚</option>
-										<option>时尚</option>
-										<option>娱乐</option>
-										<option>汽车</option>
-										<option>情感</option>
-										<option>美食</option>
-										<option>时尚</option>
-										<option>时尚</option>
+									<select name="catalog">
+										<option v-for="item,index in catalogs"  :value="index">{{item}}</option>
+										
 									</select>
 								</div>
 								<div class="ydc-reg-form-text">
@@ -167,7 +156,7 @@
 							<div class="ydc-reg-form-group clearfix">
 								<label>帐号图标:</label>
 								<div class="ydc-reg-form-input">
-									<input type="file" id="" name="username" class="" autocomplete="off" placeholder="">
+									<input type="file" id="" name="icon" class="" autocomplete="off" placeholder="">
 									<div class="ydc-reg-form-text">
 										<p>选取至少160*160尺寸的图片。请勿上传二维码或其他推广性质图片作为图标。</p>
 									</div>
@@ -176,7 +165,7 @@
 							<div class="ydc-reg-form-group clearfix">
 								<label>帐号描述:</label>
 								<div class="ydc-reg-form-input ydc-reg-form-input-width">
-									<textarea>请详细描述您的帐号，30至120字</textarea>
+									<textarea name="description">请详细描述您的帐号，30至120字</textarea>
 									<div class="ydc-reg-form-text">
 										<p>请输入2至14字的帐号名称</p>
 									</div>
@@ -185,32 +174,23 @@
 							<div class="ydc-reg-form-group clearfix">
 								<label>已有内容渠道及链接:</label>
 								<div class="ydc-reg-form-input ydc-reg-form-input-width">
-									<textarea>请详细描述您的帐号，30至120字</textarea>
+									<textarea name="other_channels">请详细描述您的帐号，30至120字</textarea>
 									<div class="ydc-reg-form-text">
 										<p>例如已发布文章的网站地址、博客地址、微信号等，方便我们作为审核参考。</p>
 									</div>
 								</div>
 							</div>
-							<div class="ydc-reg-form-group clearfix">
-								<label>已有内容渠道截图:</label>
-								<div class="ydc-reg-form-input">
-									<input type="file" id="file" name="username" class="" autocomplete="off" placeholder="">
-									<div class="ydc-reg-form-text">
-										<p>截图中必须包含个人账号名或昵称等信息,支持.jpg.png格式，大小不超过5M。</p>
-									</div>
-								</div>
-
-							</div>
+						
 							<div class="ydc-reg-form-group clearfix">
 								<label>姓名:</label>
 								<div class="ydc-reg-form-input">
-									<input type="text" id="user1" name="username" class="ydc-form-control" autocomplete="off" placeholder="">
+									<input type="text" id="user1" name="name" class="ydc-form-control" autocomplete="off" placeholder="" value="hh">
 								</div>
 							</div>
 							<div class="ydc-reg-form-group clearfix">
 								<label>身份证号:</label>
 								<div class="ydc-reg-form-input clearfix">
-									<input type="text" id="user2" name="username" class="ydc-form-control" autocomplete="off" placeholder="">
+									<input type="text" id="user2" name="identify_number" class="ydc-form-control" autocomplete="off" placeholder="" value="004X">
 									<div class="ydc-reg-form-text">
 										<p>帐号信息填写需真实有效，如发现虚假以及非个人真实信息导致帐号收益无法提取，责任由帐号个人承担</p>
 									</div>
@@ -223,32 +203,11 @@
 							<div class="ydc-reg-form-group clearfix">
 								<label>所在城市:</label>
 								<div class="ydc-reg-form-input">
-									<select>
-										<option>北京市</option>
-										<option>北京市</option>
-										<option>北京市</option>
-										<option>北京市</option>
-										<option>北京市</option>
-										<option>北京市</option>
-										<option>北京市</option>
-										<option>北京市</option>
-										<option>北京市</option>
-										<option>北京市</option>
-										<option>北京市</option>
-										<option>北京市</option>
+									<select v-model="cur_pro" name="province">
+										<option v-for="item in province" :value="item.ID" >{{item.name}}</option>
 									</select>
-									<select>
-										<option>海淀区</option>
-										<option>海淀区</option>
-										<option>海淀区</option>
-										<option>海淀区</option>
-										<option>海淀区</option>
-										<option>海淀区</option>
-										<option>海淀区</option>
-										<option>海淀区</option>
-										<option>海淀区</option>
-										<option>海淀区</option>
-										<option>海淀区</option>
+									<select v-if="citys" v-model="cur_city" name="city">
+										<option v-for="city in citys" :value="city.ID">{{city.name}}</option>
 									</select>
 								</div>
 
@@ -256,7 +215,7 @@
 							<div class="ydc-reg-form-group clearfix">
 								<label>联系手机:</label>
 								<div class="ydc-reg-form-input">
-									<input type="text" id="user4" name="username" class="ydc-form-control" autocomplete="off" placeholder="">
+									<input type="text" id="user4" name="" class="ydc-form-control" autocomplete="off" placeholder="">
 									<div class="ydc-reg-form-text">
 										<p>请输入手机号并验证</p>
 									</div>
@@ -269,7 +228,7 @@
 							<div class="ydc-reg-form-group clearfix">
 								<label>邮箱:</label>
 								<div class="ydc-reg-form-input">
-									<input type="text" id="user5" name="username" class="ydc-form-control" autocomplete="off" placeholder="">
+									<input type="text" id="user5" name="email" class="ydc-form-control" autocomplete="off" placeholder="" value="33@qq.com">
 								</div>
 								<div class="ydc-reg-form-text">
 									<p>请使用自己日常使用邮箱便于接受相关信息</p>
@@ -278,7 +237,7 @@
 							<div class="ydc-reg-form-group clearfix">
 								<label>QQ/微信号:</label>
 								<div class="ydc-reg-form-input">
-									<input type="text" id="user6" name="username" class="ydc-form-control" autocomplete="off" placeholder="">
+									<input type="text" id="user6" name="qq_wx" class="ydc-form-control" autocomplete="off" placeholder=""  value="33dasd">
 								</div>
 								<div class="ydc-reg-form-text">
 									<p>请输入常用QQ/微信号方便联系沟通</p>
@@ -287,7 +246,7 @@
 							<div class="ydc-reg-form-group clearfix">
 								<label>推荐人:</label>
 								<div class="ydc-reg-form-input">
-									<input type="text" id="user7" name="username" class="ydc-form-control" autocomplete="off" placeholder="">
+									<input type="text" id="user7" name="recommend_code" class="ydc-form-control" autocomplete="off" placeholder="" value="hh">
 								</div>
 								<div class="ydc-reg-form-text">
 									<p>选填，若有网易员工推荐您入驻，请填写相应推荐码。</p>
@@ -302,8 +261,8 @@
 						</div>
 						<div class="ydc-reg-form-group">
 							<div class="ydc-reg-form-button" style="margin-left:255px;">
-								<a class="btn btn-border fl" href="go-reg-username.html">上一步</a>
-								<a class="btn fl" href="index.html">提交申请</a>
+								<a class="btn btn-border fl" href="#" @click="cur_step--">上一步</a>
+								<a class="btn fl" href="#" @click="submit_form()">提交申请</a>
 							</div>
 						</div>
 					</form>
@@ -337,19 +296,21 @@
 </template>
 
 <script>
-//这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
+//这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）  
 //例如：import 《组件名称》 from '《组件路径》';
 import mt1 from '../assets/images/icon/mt1.png';
 import mt2 from '../assets/images/icon/mt2.png';
 import mt3 from '../assets/images/icon/mt3.png';
 import mt4 from '../assets/images/icon/mt4.png';
+import {SERVER} from '../config'
+// import { Server } from 'tls';
 export default {
 //import引入的组件需要注入到对象中才能使用
 components: {},
 data() {
 //这里存放数据
 return {
-    steps:['登录邮箱账号','选择帐号类别','填写媒体信息'],
+	steps:['登录邮箱账号','选择帐号类别','填写媒体信息'],
     step:1,
     type:-1,
     items:[
@@ -357,9 +318,33 @@ return {
         {href:mt2,title:'自媒体',content:'适合垂直领域专家、意见领袖、评论家等个人创作者或以内容生产为主的自媒体公司/机构申请。'},
         {href:mt3,title:'组织机构',content:'适合党政机关、事业单位和各类公共场馆、公益机构、学校/培训机构、民间组织等申请。'},
         {href:mt4,title:'企业',content:'适合企业、公司及其分支机构、旗下品牌等申请，品牌宣传，主要用于商业品牌推广等申请。'}
-    ]
+	],
+	catalogs:[],
+	province:[],
+	citys:null,
+	cur_pro:0,
+	cur_city:1
 
 };
+},
+async created(){
+{	// alert(SERVER)
+	let res=await fetch(SERVER+'api/account_catalog');
+	let arr=await res.json();
+	this.catalogs=arr;
+}
+{
+	//初始化请求省
+	let res1=await fetch(SERVER+'api/get_province');
+	this.province=await res1.json()
+	this.cur_pro=this.province[0].ID
+}
+
+{
+	//城市
+	let res=await fetch(SERVER+`api/get_city/${this.province[0].ID}`)
+    this.citys=await res.json()
+}
 },
 methods:{
     tostep3(){
@@ -368,7 +353,29 @@ methods:{
         }else{
             this.step++;
         }
-    }
+	},
+	//表单提交
+	async submit_form(){
+		//console.log(this.$refs['form3'])
+	  let oForm=new FormData(this.$refs['form3']);
+	  let res=await fetch(SERVER+'api/reg',{
+			method:'post',
+			body:oForm
+		})
+		let json=await res.json()
+		console.log(json)
+
+	}
+},
+watch:{
+	async cur_pro(){
+		//城市
+	let res=await fetch(SERVER+`api/get_city/${this.cur_pro}`)
+	this.citys=await res.json()
+	this.cur_city=this.citys[0].ID
+		
+
+	}
 }
 }
 </script>
